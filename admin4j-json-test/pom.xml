@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.admin4j.json</groupId>
+        <artifactId>admin4j-json</artifactId>
+        <version>${revision}</version>
+    </parent>
+
+    <artifactId>admin4j-json-test</artifactId>
+
+    <properties>
+        <maven.compiler.source>8</maven.compiler.source>
+        <maven.compiler.target>8</maven.compiler.target>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+        </dependency>
+        <!--        <dependency>-->
+        <!--            <groupId>com.admin4j.json</groupId>-->
+        <!--            <artifactId>admin4j-json-fastjson</artifactId>-->
+        <!--            <version>${revision}</version>-->
+        <!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>com.admin4j.json</groupId>-->
+        <!--            <artifactId>admin4j-json-fastjson2</artifactId>-->
+        <!--            <version>${revision}</version>-->
+        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.admin4j.json</groupId>
+            <artifactId>admin4j-json-gson</artifactId>
+            <version>0.0.1</version>
+        </dependency>
+    </dependencies>
+
+</project>
