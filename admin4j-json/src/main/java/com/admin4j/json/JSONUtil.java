@@ -9,6 +9,8 @@ import java.util.ServiceLoader;
 import java.util.stream.StreamSupport;
 
 /**
+ * JSON 解析工具类
+ *
  * @author andanyang
  * @since 2023/5/5 13:10
  */
@@ -37,6 +39,9 @@ public class JSONUtil {
         return JSON_CONVERTOR.parseObject(is, charset, clazz);
     }
 
+    /**
+     * 解析/发序列化成对象
+     */
     public static <T> T parseObject(InputStream is, Class<T> clazz) {
         return parseObject(is, StandardCharsets.UTF_8, clazz);
     }
@@ -67,13 +72,22 @@ public class JSONUtil {
         return JSON_CONVERTOR.parseMap(input);
     }
 
+    /**
+     * 解析/发序列化成Map
+     */
     public static Map<String, Object> parseMap(InputStream is) {
         return JSON_CONVERTOR.parseMap(is);
     }
 
-
+    /**
+     * 解析/发序列化成List
+     */
     public static <T> List<T> parseList(String input, Class<T> clazz) {
         return JSON_CONVERTOR.parseList(input, clazz);
+    }
+
+    public static <T> List<T> parseList(InputStream is, Class<T> clazz) {
+        return JSON_CONVERTOR.parseList(is, clazz);
     }
 
     /**
