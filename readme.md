@@ -108,3 +108,124 @@ public class JSONTest {
     <version>0.2.0</version>
 </dependency>
 ```
+
+# 添加自己的JSON解析框架
+
+本项目使用JDK的SPI原理加载插件，使用者也可以使用SPI功能加入自己的JSON解析框架
+參考 [FastjsonConvertor.java](https://github.com/admin4j/admin4j-json/blob/master/admin4j-json-fastjson/src/main/java/com/admin4j/json/FastjsonConvertor.java)
+
+## 第一步，引入依赖，实现JSONConvertor接口
+
+```
+ <dependencies>
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+        <dependency>
+            <groupId>com.admin4j.json</groupId>
+            <artifactId>admin4j-json</artifactId>
+            <version>0.2.0</version>
+        </dependency>
+  </dependencies>
+```
+
+```java
+public class FastjsonConvertor implements JSONConvertor {
+
+    /**
+     * 解析/发序列化成对象
+     *
+     * @param is
+     * @param clazz
+     * @param charset
+     */
+    @Override
+    public <T> T parseObject(InputStream is, Charset charset, Class<T> clazz) {
+
+        try {
+            return JSON.parseObject(is, charset, clazz);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    /**
+     * 解析/发序列化成对象
+     *
+     * @param bytes
+     * @param clazz
+     * @param charset
+     */
+    @Override
+    public <T> T parseObject(byte[] bytes, Charset charset, Class<T> clazz) {
+
+        return JSON.parseObject(bytes, clazz);
+
+    }
+
+    /**
+     * 解析/发序列化成对象
+     *
+     * @param input
+     * @param clazz
+     */
+    @Override
+    public <T> T parseObject(String input, Class<T> clazz) {
+        return JSON.parseObject(input, clazz);
+    }
+
+
+    /**
+     * JSON 转 Map
+     */
+    @Override
+    public Map<String, Object> parseMap(String input) {
+        return JSON.parseObject(input);
+    }
+
+    @Override
+    public Map<String, Object> parseMap(InputStream is) {
+        try {
+            return JSON.parseObject(is, StandardCharsets.UTF_8, Map.class);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    @Override
+    public <T> List<T> parseList(String input, Class<T> clazz) {
+        return JSON.parseArray(input, clazz);
+    }
+
+    @Override
+    public <T> List<T> parseList(InputStream is, Class<T> clazz) {
+
+        String str = new BufferedReader(new InputStreamReader(is))
+                .lines().collect(Collectors.joining(System.lineSeparator()));
+        return JSON.parseArray(str, clazz);
+    }
+
+    /**
+     * 序列化成json字符串
+     *
+     * @param object
+     */
+    @Override
+    public String toJSONString(Object object) {
+        return JSON.toJSONString(object);
+    }
+
+    @Override
+    public byte[] serialize(Object object) {
+        return JSON.toJSONBytes(object);
+
+    }
+}
+```
+
+## 第二步，配置SPI
+
+![在这里插入图片描述](https://img-blog.csdnimg.cn/d131f63b1fc14e6fbfe0e938dcf33dd3.png)
+
+## 第三部，测试使用
