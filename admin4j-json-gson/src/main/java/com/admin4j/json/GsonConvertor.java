@@ -67,19 +67,17 @@ public class GsonConvertor implements JSONConvertor {
     }
 
     @Override
-    public <T> List<T> parseList(String input, Class<T> type) {
-        Type typeList = new TypeToken<List<T>>() {
-        }.getType();
-        return gson.fromJson(input, typeList);
+    public <T> List<T> parseList(String input, Class<T> clazz) {
+        TypeToken<?> parameterized = TypeToken.getParameterized(List.class, clazz);
+        return gson.fromJson(input, parameterized.getType());
     }
 
     @Override
     public <T> List<T> parseList(InputStream is, Class<T> clazz) {
 
-        Type typeList = new TypeToken<List<T>>() {
-        }.getType();
+        TypeToken<?> parameterized = TypeToken.getParameterized(List.class, clazz);
         InputStreamReader inputStreamReader = new InputStreamReader(is);
-        return gson.fromJson(inputStreamReader, typeList);
+        return gson.fromJson(inputStreamReader, parameterized.getType());
     }
 
     /**

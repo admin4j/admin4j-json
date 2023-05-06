@@ -4,12 +4,12 @@
 
     <parent>
         <groupId>com.admin4j.json</groupId>
-        <artifactId>admin4j-json</artifactId>
+        <artifactId>admin4j-json-parent</artifactId>
         <version>${revision}</version>
     </parent>
 
 
-    <artifactId>json</artifactId>
+    <artifactId>admin4j-json</artifactId>
     <packaging>jar</packaging>
 
     <name>json</name>
@@ -17,9 +17,4 @@
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
-
-    <dependencies>
-   
-
-    </dependencies>
 </project>

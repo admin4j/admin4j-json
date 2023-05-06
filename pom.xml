@@ -9,14 +9,30 @@
     </parent>
 
     <groupId>com.admin4j.json</groupId>
-    <artifactId>admin4j-json</artifactId>
+    <artifactId>admin4j-json-parent</artifactId>
     <version>${revision}</version>
     <packaging>pom</packaging>
 
-    <name>admin4j-json</name>
+    <name>json-parent</name>
+    <description>各大JSON解析框架适配器，支持fastjson、fastjson2、gson、jackson</description>
+    <url>https://github.com/admin4j/admin4j-json</url>
+    <!-- 开源签名证书 -->
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+    <!-- 仓库信息 -->
+    <scm>
+        <connection>scm:git@github.com:admin4j/common-http.git</connection>
+        <developerConnection>https://github.com/admin4j/admin4j-json/issues</developerConnection>
+        <url>https://github.com/admin4j/admin4j-json</url>
+    </scm>
 
     <properties>
-        <revision>0.0.1</revision>
+        <revision>0.2.0</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
@@ -28,19 +44,12 @@
         <module>admin4j-json-fastjson</module>
         <module>admin4j-json-test</module>
     </modules>
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
     <dependencyManagement>
         <dependencies>
             <dependency>
                 <groupId>com.admin4j.json</groupId>
-                <artifactId>json</artifactId>
+                <artifactId>admin4j-json</artifactId>
                 <version>${revision}</version>
             </dependency>
         </dependencies>

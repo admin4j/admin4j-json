@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.admin4j.json</groupId>
-        <artifactId>admin4j-json</artifactId>
+        <artifactId>admin4j-json-parent</artifactId>
         <version>${revision}</version>
     </parent>
 
@@ -15,16 +15,18 @@
 
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <gson.version>2.10.1</gson.version>
     </properties>
 
     <dependencies>
         <dependency>
             <groupId>com.google.code.gson</groupId>
             <artifactId>gson</artifactId>
+            <version>${gson.version}</version>
         </dependency>
         <dependency>
             <groupId>com.admin4j.json</groupId>
-            <artifactId>json</artifactId>
+            <artifactId>admin4j-json</artifactId>
         </dependency>
         <dependency>
             <groupId>junit</groupId>

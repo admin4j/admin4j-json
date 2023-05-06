@@ -2,6 +2,7 @@ package com.admin4j.json;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.Data;
 
@@ -77,7 +78,6 @@ public class JacksonConvertor implements JSONConvertor {
      * JSON 转 Map
      *
      * @param input
-     * @param clazz
      */
     @Override
     public Map<String, Object> parseMap(String input) {
@@ -101,8 +101,8 @@ public class JacksonConvertor implements JSONConvertor {
     @Override
     public <T> List<T> parseList(String input, Class<T> clazz) {
         try {
-            return mapper.readValue(input, new TypeReference<List<T>>() {
-            });
+            JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, clazz);
+            return mapper.readValue(input, javaType);
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
@@ -111,8 +111,8 @@ public class JacksonConvertor implements JSONConvertor {
     @Override
     public <T> List<T> parseList(InputStream is, Class<T> clazz) {
         try {
-            return mapper.readValue(is, new TypeReference<List<T>>() {
-            });
+            JavaType javaType = mapper.getTypeFactory().constructParametricType(List.class, clazz);
+            return mapper.readValue(is, javaType);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }

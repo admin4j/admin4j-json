@@ -3,7 +3,7 @@
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>com.admin4j.json</groupId>
-        <artifactId>admin4j-json</artifactId>
+        <artifactId>admin4j-json-parent</artifactId>
         <version>${revision}</version>
     </parent>
 
@@ -24,7 +24,7 @@
         </dependency>
         <dependency>
             <groupId>com.admin4j.json</groupId>
-            <artifactId>json</artifactId>
+            <artifactId>admin4j-json</artifactId>
         </dependency>
     </dependencies>
 </project>
