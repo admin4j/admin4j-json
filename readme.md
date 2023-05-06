@@ -89,8 +89,7 @@ public class JSONTest {
 
 #### 随时替换json解析框架
 
-```xml
-
+``` 
 <dependency>
     <groupId>io.github.admin4j</groupId>
     <artifactId>http</artifactId>
@@ -102,9 +101,10 @@ public class JSONTest {
         </exclusion>
     </exclusions>
 </dependency>
+
 <dependency>
-<groupId>com.admin4j.json</groupId>
-<artifactId>admin4j-json-jackson</artifactId>
-<version>0.2.0</version>
+    <groupId>com.admin4j.json</groupId>
+    <artifactId>admin4j-json-jackson</artifactId>
+    <version>0.2.0</version>
 </dependency>
 ```
