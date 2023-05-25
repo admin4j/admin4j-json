@@ -15,7 +15,7 @@ json 解析框架，轻松应对各种开发需求。
 <dependency>
     <groupId>com.admin4j.json</groupId>
     <artifactId>admin4j-json-jackson</artifactId>
-    <version>0.2.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
@@ -26,7 +26,7 @@ json 解析框架，轻松应对各种开发需求。
 <dependency>
     <groupId>com.admin4j.json</groupId>
     <artifactId>admin4j-json-fastjson</artifactId>
-    <version>0.2.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
@@ -37,7 +37,7 @@ json 解析框架，轻松应对各种开发需求。
 <dependency>
     <groupId>com.admin4j.json</groupId>
     <artifactId>admin4j-json-fastjson2</artifactId>
-    <version>0.2.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
@@ -48,7 +48,7 @@ json 解析框架，轻松应对各种开发需求。
 <dependency>
     <groupId>com.admin4j.json</groupId>
     <artifactId>admin4j-json-gson</artifactId>
-    <version>0.2.0</version>
+    <version>0.5.0</version>
 </dependency>
 ```
 
