@@ -1,11 +1,12 @@
 # admin4j-json
 
-强大的 JSON 适配器工具类。适配各大框架 fastjson，fastjson2，jackson，gson。
-解决JSON解析第三方框架多变/更换问题。随时替换json解析框架
+admin4j-json 是一款高效实用的 JSON 解析和生成工具，提供简单易用的 API，可轻松完成 JSON 数据的读写操作。不仅如此，admin4j-json
+还通过插件SPI的模式适配了多个主流框架，如 fastjson，fastjson2，jackson，gson 等，解决了 JSON 解析第三方框架多变/更换的问题，让您随时替换
+json 解析框架，轻松应对各种开发需求。
 
 # usage
 
-## maven 映入
+## maven 引入
 
 ### 使用 jackson
 
