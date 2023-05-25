@@ -1,5 +1,8 @@
 package com.admin4j.json;
 
+import com.admin4j.json.mapper.JSONArrayMapper;
+import com.admin4j.json.mapper.JSONMapper;
+
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -44,9 +47,21 @@ public interface JSONConvertor extends Prioritized {
 
     Map<String, Object> parseMap(InputStream is);
 
+    JSONMapper parseMapper(InputStream is);
+
+    JSONMapper parseMapper(String input);
+
     <T> List<T> parseList(String input, Class<T> clazz);
 
     <T> List<T> parseList(InputStream is, Class<T> clazz);
+
+    List<JSONMapper> parseJSONMappers(String input);
+
+    List<JSONMapper> parseJSONMappers(InputStream is);
+
+    JSONArrayMapper parseArrayMapper(String input);
+
+    JSONArrayMapper parseArrayMapper(InputStream is);
 
     /**
      * 序列化成json字符串

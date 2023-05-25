@@ -1,14 +1,19 @@
 package com.admin4j.json;
 
+import com.admin4j.json.mapper.JSONArrayMapper;
+import com.admin4j.json.mapper.JSONMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.JavaType;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import lombok.Data;
 
 import java.io.IOException;
 import java.io.InputStream;
 import java.nio.charset.Charset;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -140,6 +145,92 @@ public class JacksonConvertor implements JSONConvertor {
         } catch (JsonProcessingException e) {
             throw new RuntimeException(e);
         }
+    }
 
+
+    @Override
+    public JSONMapper parseMapper(InputStream is) {
+
+        JsonNode node = null;
+        try {
+            node = mapper.readTree(is);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return new JacksonJSONMapper(mapper, node);
+    }
+
+    @Override
+    public JSONMapper parseMapper(String input) {
+        JsonNode node = null;
+
+        try {
+            node = mapper.readTree(input);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+        return new JacksonJSONMapper(mapper, node);
+    }
+
+    @Override
+    public List<JSONMapper> parseJSONMappers(String input) {
+        ArrayNode arrayNode;
+        try {
+            arrayNode = (ArrayNode) mapper.readTree(input);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+        int size = arrayNode.size();
+        List<JSONMapper> result = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+
+            result.add(new JacksonJSONMapper(mapper, arrayNode.get(i)));
+        }
+        return result;
+    }
+
+    @Override
+    public List<JSONMapper> parseJSONMappers(InputStream is) {
+        ArrayNode arrayNode;
+        try {
+            arrayNode = (ArrayNode) mapper.readTree(is);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        int size = arrayNode.size();
+        List<JSONMapper> result = new ArrayList<>(size);
+        for (int i = 0; i < size; i++) {
+
+            result.add(new JacksonJSONMapper(mapper, arrayNode.get(i)));
+        }
+        return result;
+    }
+
+
+    @Override
+    public JSONArrayMapper parseArrayMapper(String input) {
+        ArrayNode arrayNode;
+        try {
+            arrayNode = (ArrayNode) mapper.readTree(input);
+        } catch (JsonProcessingException e) {
+            throw new RuntimeException(e);
+        }
+
+        return new JacksonArrayMapper(mapper, arrayNode);
+    }
+
+    @Override
+    public JSONArrayMapper parseArrayMapper(InputStream is) {
+        ArrayNode arrayNode;
+        try {
+            arrayNode = (ArrayNode) mapper.readTree(is);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+
+        return new JacksonArrayMapper(mapper, arrayNode);
     }
 }

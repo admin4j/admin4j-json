@@ -22,20 +22,25 @@
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
         </dependency>
-        <!--        <dependency>-->
-        <!--            <groupId>com.admin4j.json</groupId>-->
-        <!--            <artifactId>admin4j-json-fastjson</artifactId>-->
-        <!--            <version>${revision}</version>-->
-        <!--        </dependency>-->
-        <!--        <dependency>-->
-        <!--            <groupId>com.admin4j.json</groupId>-->
-        <!--            <artifactId>admin4j-json-fastjson2</artifactId>-->
-        <!--            <version>${revision}</version>-->
-        <!--        </dependency>-->
+        <dependency>
+            <groupId>com.admin4j.json</groupId>
+            <artifactId>admin4j-json-fastjson</artifactId>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.admin4j.json</groupId>
+            <artifactId>admin4j-json-fastjson2</artifactId>
+            <version>${revision}</version>
+        </dependency>
         <dependency>
             <groupId>com.admin4j.json</groupId>
             <artifactId>admin4j-json-gson</artifactId>
-            <version>0.2.0</version>
+            <version>${revision}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.admin4j.json</groupId>
+            <artifactId>admin4j-json-jackson</artifactId>
+            <version>${revision}</version>
         </dependency>
     </dependencies>
 
