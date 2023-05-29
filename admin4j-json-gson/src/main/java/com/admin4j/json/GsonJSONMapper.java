@@ -7,6 +7,7 @@ import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -102,6 +103,11 @@ public class GsonJSONMapper implements JSONMapper {
     @Override
     public String getString(String key) {
         return json.get(key).getAsString();
+    }
+
+    @Override
+    public BigDecimal getBigDecimal(String key) {
+        return json.get(key).getAsBigDecimal();
     }
 
     @Override

@@ -5,6 +5,7 @@ import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -105,6 +106,11 @@ public class FastjsonJSONMapper implements JSONMapper {
     @Override
     public String getString(String key) {
         return jsonObject.getString(key);
+    }
+
+    @Override
+    public BigDecimal getBigDecimal(String key) {
+        return jsonObject.getBigDecimal(key);
     }
 
     @Override

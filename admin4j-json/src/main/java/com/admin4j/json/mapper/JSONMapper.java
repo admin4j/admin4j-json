@@ -1,5 +1,6 @@
 package com.admin4j.json.mapper;
 
+import java.math.BigDecimal;
 import java.util.List;
 import java.util.Set;
 
@@ -57,6 +58,8 @@ public interface JSONMapper {
 
 
     String getString(String key);
+
+    BigDecimal getBigDecimal(String key);
 
     boolean containsKey(String key);
 

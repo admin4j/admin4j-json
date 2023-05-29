@@ -5,6 +5,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import lombok.RequiredArgsConstructor;
 
+import java.math.BigDecimal;
 import java.util.*;
 
 /**
@@ -101,6 +102,11 @@ public class JacksonJSONMapper implements JSONMapper {
     @Override
     public String getString(String key) {
         return jsonNode.get(key).asText();
+    }
+
+    @Override
+    public BigDecimal getBigDecimal(String key) {
+        return new BigDecimal(jsonNode.get(key).asText());
     }
 
     @Override
