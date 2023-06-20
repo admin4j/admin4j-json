@@ -1,5 +1,7 @@
 package com.admin4j.json;
 
+import com.admin4j.json.mapper.JSONMapper;
+
 import java.io.InputStream;
 import java.nio.charset.Charset;
 import java.nio.charset.StandardCharsets;
@@ -77,6 +79,20 @@ public class JSONUtil {
      */
     public static Map<String, Object> parseMap(InputStream is) {
         return JSON_CONVERTOR.parseMap(is);
+    }
+
+    /**
+     * 解析/发序列化成JSONMapper
+     */
+    public static JSONMapper parseMapper(String input) {
+        return JSON_CONVERTOR.parseMapper(input);
+    }
+
+    /**
+     * 解析/发序列化成JSONMapper
+     */
+    public static JSONMapper parseMapper(InputStream is) {
+        return JSON_CONVERTOR.parseMapper(is);
     }
 
     /**

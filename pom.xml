@@ -32,7 +32,7 @@
     </scm>
 
     <properties>
-        <revision>0.5.2</revision>
+        <revision>0.6.0</revision>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     </properties>
 
