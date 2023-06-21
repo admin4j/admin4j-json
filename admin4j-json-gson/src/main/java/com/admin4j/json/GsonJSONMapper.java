@@ -1,5 +1,6 @@
 package com.admin4j.json;
 
+import com.admin4j.json.mapper.JSONArrayMapper;
 import com.admin4j.json.mapper.JSONMapper;
 import com.google.gson.Gson;
 import com.google.gson.JsonArray;
@@ -121,7 +122,7 @@ public class GsonJSONMapper implements JSONMapper {
     }
 
     /**
-     * 获取改key的 子对象的JSONMapper值
+     * 获取改key的获取该key的 子对象的对象（JSONMapper）值
      *
      * @param key
      */
@@ -129,6 +130,15 @@ public class GsonJSONMapper implements JSONMapper {
     public JSONMapper getJSONMapper(String key) {
 
         return json.has(key) ? new GsonJSONMapper(gson, (JsonObject) json.get(key)) : null;
+    }
+
+    /**
+     * @param key key
+     * @return 获取该key的 子对象的 数组 （JSONArrayMapper）值
+     */
+    @Override
+    public JSONArrayMapper getJSONArrayMapper(String key) {
+        return json.has(key) ? new GsonArrayMapper(gson, json.getAsJsonArray(key)) : null;
     }
 
     /**

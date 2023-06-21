@@ -1,8 +1,10 @@
 package com.admin4j.json;
 
+import com.admin4j.json.mapper.JSONArrayMapper;
 import com.admin4j.json.mapper.JSONMapper;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.node.ArrayNode;
 import lombok.RequiredArgsConstructor;
 
 import java.math.BigDecimal;
@@ -132,13 +134,26 @@ public class JacksonJSONMapper implements JSONMapper {
     }
 
     /**
-     * 获取改key的 子对象的JSONMapper值
+     * 获取改key的获取该key的 子对象的对象（JSONMapper）值
      *
      * @param key
      */
     @Override
     public JSONMapper getJSONMapper(String key) {
         return new JacksonJSONMapper(mapper, jsonNode.get(key));
+    }
+
+    /**
+     * @param key key
+     * @return 获取该key的 子对象的 数组 （JSONArrayMapper）值
+     */
+    @Override
+    public JSONArrayMapper getJSONArrayMapper(String key) {
+        JsonNode node = this.jsonNode.get(key);
+        if (node == null || !node.isArray()) {
+            return null;
+        }
+        return new JacksonArrayMapper(mapper, (ArrayNode) jsonNode.get(key));
     }
 
     /**

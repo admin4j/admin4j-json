@@ -1,6 +1,7 @@
 package com.admin4j.json;
 
 
+import com.admin4j.json.mapper.JSONArrayMapper;
 import com.admin4j.json.mapper.JSONMapper;
 import com.alibaba.fastjson2.JSONArray;
 import com.alibaba.fastjson2.JSONObject;
@@ -28,6 +29,11 @@ public class Fastjson2JSONMapper implements JSONMapper {
     @Override
     public JSONMapper getJSONMapper(String key) {
         return new Fastjson2JSONMapper(jsonObject.getJSONObject(key));
+    }
+
+    @Override
+    public JSONArrayMapper getJSONArrayMapper(String key) {
+        return new Fast2JSONArrayMapper(jsonObject.getJSONArray(key));
     }
 
     @Override

@@ -68,9 +68,15 @@ public interface JSONMapper {
 
 
     /**
-     * 获取改key的 子对象的JSONMapper值
+     * 获取该key的 子对象的对象（JSONMapper）值
      */
     JSONMapper getJSONMapper(String key);
+
+    /**
+     * @param key key
+     * @return 获取该key的 子对象的 数组 （JSONArrayMapper）值
+     */
+    JSONArrayMapper getJSONArrayMapper(String key);
 
 
     /**

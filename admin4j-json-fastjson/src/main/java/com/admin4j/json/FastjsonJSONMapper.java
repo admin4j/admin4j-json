@@ -1,5 +1,6 @@
 package com.admin4j.json;
 
+import com.admin4j.json.mapper.JSONArrayMapper;
 import com.admin4j.json.mapper.JSONMapper;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
@@ -27,6 +28,15 @@ public class FastjsonJSONMapper implements JSONMapper {
     @Override
     public JSONMapper getJSONMapper(String key) {
         return new FastjsonJSONMapper(jsonObject.getJSONObject(key));
+    }
+
+    /**
+     * @param key key
+     * @return 获取该key的 子对象的 数组 （JSONArrayMapper）值
+     */
+    @Override
+    public JSONArrayMapper getJSONArrayMapper(String key) {
+        return new FastJSONArrayMapper(jsonObject.getJSONArray(key));
     }
 
     @Override
