@@ -26,6 +26,16 @@ public class FastjsonJSONMapper implements JSONMapper {
     }
 
     @Override
+    public boolean isArray(String key) {
+        return jsonObject.get(key) instanceof JSONArray;
+    }
+
+    @Override
+    public boolean isObject(String key) {
+        return jsonObject.get(key) instanceof JSONObject;
+    }
+
+    @Override
     public JSONMapper getJSONMapper(String key) {
         JSONObject jsonObject1 = jsonObject.getJSONObject(key);
         return jsonObject1 == null ? null : new FastjsonJSONMapper(jsonObject1);

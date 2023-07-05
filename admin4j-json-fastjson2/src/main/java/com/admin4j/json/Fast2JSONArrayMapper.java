@@ -58,11 +58,29 @@ public class Fast2JSONArrayMapper implements JSONArrayMapper {
 
     /**
      * @param index 元素下标
+     * @return boolean 值
+     */
+    @Override
+    public Boolean getBoolean(int index) {
+        return jsonArray.getBoolean(index);
+    }
+
+    /**
+     * @param index 元素下标
      * @return int 值
      */
     @Override
     public int getIntValue(int index) {
         return jsonArray.getIntValue(index);
+    }
+
+    /**
+     * @param index 元素下标
+     * @return int 值
+     */
+    @Override
+    public Integer getInteger(int index) {
+        return jsonArray.getInteger(index);
     }
 
     /**
@@ -76,6 +94,15 @@ public class Fast2JSONArrayMapper implements JSONArrayMapper {
 
     /**
      * @param index 元素下标
+     * @return long 值
+     */
+    @Override
+    public Long getLong(int index) {
+        return jsonArray.getLong(index);
+    }
+
+    /**
+     * @param index 元素下标
      * @return float 值
      */
     @Override
@@ -85,11 +112,29 @@ public class Fast2JSONArrayMapper implements JSONArrayMapper {
 
     /**
      * @param index 元素下标
+     * @return float 值
+     */
+    @Override
+    public Float getFloat(int index) {
+        return jsonArray.getFloat(index);
+    }
+
+    /**
+     * @param index 元素下标
      * @return double 值
      */
     @Override
     public double getDoubleValue(int index) {
         return jsonArray.getDoubleValue(index);
+    }
+
+    /**
+     * @param index 元素下标
+     * @return double 值
+     */
+    @Override
+    public Double getDouble(int index) {
+        return jsonArray.getDouble(index);
     }
 
     /**

@@ -62,11 +62,42 @@ public class JacksonArrayMapper implements JSONArrayMapper {
 
     /**
      * @param index 元素下标
+     * @return boolean 值
+     */
+    @Override
+    public Boolean getBoolean(int index) {
+        JsonNode node = arrayNode.get(index);
+        return node == null ? null : node.booleanValue();
+    }
+
+
+    /**
+     * @param index 元素下标
      * @return int 值
      */
     @Override
     public int getIntValue(int index) {
         return arrayNode.get(index).intValue();
+    }
+
+    /**
+     * @param index 元素下标
+     * @return int 值
+     */
+    @Override
+    public Integer getInteger(int index) {
+        JsonNode node = arrayNode.get(index);
+        return node == null ? null : node.intValue();
+    }
+
+    /**
+     * @param index 元素下标
+     * @return long 值
+     */
+    @Override
+    public Long getLong(int index) {
+        JsonNode node = arrayNode.get(index);
+        return node == null ? null : node.longValue();
     }
 
     /**
@@ -89,11 +120,31 @@ public class JacksonArrayMapper implements JSONArrayMapper {
 
     /**
      * @param index 元素下标
+     * @return float 值
+     */
+    @Override
+    public Float getFloat(int index) {
+        JsonNode node = arrayNode.get(index);
+        return node == null ? null : node.floatValue();
+    }
+
+    /**
+     * @param index 元素下标
      * @return double 值
      */
     @Override
     public double getDoubleValue(int index) {
         return arrayNode.get(index).doubleValue();
+    }
+
+    /**
+     * @param index 元素下标
+     * @return double 值
+     */
+    @Override
+    public Double getDouble(int index) {
+        JsonNode node = arrayNode.get(index);
+        return node == null ? null : node.doubleValue();
     }
 
     /**

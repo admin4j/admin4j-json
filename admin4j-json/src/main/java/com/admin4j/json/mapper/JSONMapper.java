@@ -15,6 +15,15 @@ public interface JSONMapper {
      */
     Object getOriginObject();
 
+    /**
+     * 是否为数组
+     */
+    boolean isArray(String key);
+
+    /**
+     * 是否是对象
+     */
+    boolean isObject(String key);
 
     /**
      * 转化为JSON 字符串

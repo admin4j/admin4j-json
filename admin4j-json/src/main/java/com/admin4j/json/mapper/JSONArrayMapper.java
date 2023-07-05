@@ -55,6 +55,37 @@ public interface JSONArrayMapper {
      */
     double getDoubleValue(int index);
 
+
+    /**
+     * @param index 元素下标
+     * @return boolean 值
+     */
+    Boolean getBoolean(int index);
+
+    /**
+     * @param index 元素下标
+     * @return int 值
+     */
+    Integer getInteger(int index);
+
+    /**
+     * @param index 元素下标
+     * @return long 值
+     */
+    Long getLong(int index);
+
+    /**
+     * @param index 元素下标
+     * @return float 值
+     */
+    Float getFloat(int index);
+
+    /**
+     * @param index 元素下标
+     * @return double 值
+     */
+    Double getDouble(int index);
+
     /**
      * @param index 元素下标
      * @return String 值

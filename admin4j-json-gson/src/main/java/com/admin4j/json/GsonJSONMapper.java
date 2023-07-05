@@ -52,6 +52,18 @@ public class GsonJSONMapper implements JSONMapper {
     }
 
     @Override
+    public boolean isArray(String key) {
+        JsonElement jsonElement = json.get(key);
+        return jsonElement instanceof JsonArray;
+    }
+
+    @Override
+    public boolean isObject(String key) {
+        JsonElement jsonElement = json.get(key);
+        return jsonElement instanceof JsonObject;
+    }
+
+    @Override
     public Boolean getBoolean(String key) {
         return json.has(key) ? json.get(key).getAsBoolean() : null;
     }

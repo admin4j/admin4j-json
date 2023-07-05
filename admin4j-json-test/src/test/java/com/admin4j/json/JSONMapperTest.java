@@ -44,6 +44,35 @@ public class JSONMapperTest {
         //jsonMapper = new JacksonJSONMapper(objectMapper, node);
     }
 
+
+    @Test
+    public void testIsObject() {
+        boolean subTestJSON = jsonMapper.isObject("subTestJSON");
+        System.out.println("testIsObject = " + subTestJSON);
+        assert subTestJSON;
+        boolean a = jsonMapper.isObject("a");
+        System.out.println("a = " + a);
+        assert !a;
+
+        boolean array = jsonMapper.isObject("subTestJSONs");
+        System.out.println("array = " + array);
+        assert !array;
+    }
+
+    @Test
+    public void testIsArray() {
+        boolean subTestJSON = jsonMapper.isArray("subTestJSON");
+        System.out.println("testIsArray = " + subTestJSON);
+        assert !subTestJSON;
+        boolean a = jsonMapper.isArray("a");
+        System.out.println("a = " + a);
+        assert !a;
+
+        boolean array = jsonMapper.isArray("subTestJSONs");
+        System.out.println("array = " + array);
+        assert array;
+    }
+
     @Test
     public void testOriginObject() {
 

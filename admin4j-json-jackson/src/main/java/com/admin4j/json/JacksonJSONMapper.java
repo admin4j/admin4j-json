@@ -22,6 +22,28 @@ public class JacksonJSONMapper implements JSONMapper {
 
 
     /**
+     * 是否为数组
+     *
+     * @param key
+     */
+    @Override
+    public boolean isArray(String key) {
+        JsonNode node = jsonNode.get(key);
+        return node != null && node.isArray();
+    }
+
+    /**
+     * 是否是对象
+     *
+     * @param key
+     */
+    @Override
+    public boolean isObject(String key) {
+        JsonNode node = jsonNode.get(key);
+        return node != null && node.isObject();
+    }
+
+    /**
      * 获取原始对象
      */
     @Override

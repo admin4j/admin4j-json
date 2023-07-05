@@ -60,11 +60,30 @@ public class GsonArrayMapper implements JSONArrayMapper {
 
     /**
      * @param index 元素下标
+     * @return boolean 值
+     */
+    @Override
+    public Boolean getBoolean(int index) {
+
+        return size() <= index ? null : json.get(index).getAsBoolean();
+    }
+
+    /**
+     * @param index 元素下标
      * @return int 值
      */
     @Override
     public int getIntValue(int index) {
         return json.get(index).getAsInt();
+    }
+
+    /**
+     * @param index 元素下标
+     * @return int 值
+     */
+    @Override
+    public Integer getInteger(int index) {
+        return size() <= index ? null : json.get(index).getAsInt();
     }
 
     /**
@@ -78,6 +97,15 @@ public class GsonArrayMapper implements JSONArrayMapper {
 
     /**
      * @param index 元素下标
+     * @return long 值
+     */
+    @Override
+    public Long getLong(int index) {
+        return size() <= index ? null : json.get(index).getAsLong();
+    }
+
+    /**
+     * @param index 元素下标
      * @return float 值
      */
     @Override
@@ -87,11 +115,29 @@ public class GsonArrayMapper implements JSONArrayMapper {
 
     /**
      * @param index 元素下标
+     * @return float 值
+     */
+    @Override
+    public Float getFloat(int index) {
+        return size() <= index ? null : json.get(index).getAsFloat();
+    }
+
+    /**
+     * @param index 元素下标
      * @return double 值
      */
     @Override
     public double getDoubleValue(int index) {
         return json.get(index).getAsDouble();
+    }
+
+    /**
+     * @param index 元素下标
+     * @return double 值
+     */
+    @Override
+    public Double getDouble(int index) {
+        return size() <= index ? null : json.get(index).getAsDouble();
     }
 
     /**
