@@ -15,7 +15,7 @@ json 解析框架，轻松应对各种开发需求。
 <dependency>
     <groupId>com.admin4j.json</groupId>
     <artifactId>admin4j-json-jackson</artifactId>
-    <version>0.6.1</version>
+    <version>0.7.0</version>
 </dependency>
 ```
 
