@@ -3,6 +3,7 @@ package com.admin4j.json;
 import com.admin4j.json.mapper.JSONArrayMapper;
 import com.admin4j.json.mapper.JSONMapper;
 import com.alibaba.fastjson.JSONArray;
+import com.alibaba.fastjson.JSONObject;
 import lombok.RequiredArgsConstructor;
 
 import java.util.List;
@@ -31,7 +32,8 @@ public class FastJSONArrayMapper implements JSONArrayMapper {
      */
     @Override
     public JSONMapper getMapper(int index) {
-        return new FastjsonJSONMapper(jsonArray.getJSONObject(index));
+        JSONObject jsonObject = jsonArray.getJSONObject(index);
+        return jsonObject == null ? null : new FastjsonJSONMapper(jsonObject);
     }
 
     /**
@@ -41,7 +43,8 @@ public class FastJSONArrayMapper implements JSONArrayMapper {
     @Override
     public JSONArrayMapper getArray(int index) {
 
-        return new FastJSONArrayMapper(jsonArray.getJSONArray(index));
+        JSONArray jsonArray1 = jsonArray.getJSONArray(index);
+        return jsonArray1 == null ? null : new FastJSONArrayMapper(jsonArray1);
     }
 
     /**

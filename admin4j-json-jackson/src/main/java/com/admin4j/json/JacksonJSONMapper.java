@@ -140,7 +140,8 @@ public class JacksonJSONMapper implements JSONMapper {
      */
     @Override
     public JSONMapper getJSONMapper(String key) {
-        return new JacksonJSONMapper(mapper, jsonNode.get(key));
+        JsonNode jsonNode1 = jsonNode.get(key);
+        return jsonNode1 == null ? null : new JacksonJSONMapper(mapper, jsonNode1);
     }
 
     /**
@@ -153,7 +154,8 @@ public class JacksonJSONMapper implements JSONMapper {
         if (node == null || !node.isArray()) {
             return null;
         }
-        return new JacksonArrayMapper(mapper, (ArrayNode) jsonNode.get(key));
+        ArrayNode arrayNode = (ArrayNode) jsonNode.get(key);
+        return arrayNode == null ? null : new JacksonArrayMapper(mapper, arrayNode);
     }
 
     /**

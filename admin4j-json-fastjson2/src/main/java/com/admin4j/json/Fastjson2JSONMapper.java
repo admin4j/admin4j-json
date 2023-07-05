@@ -28,12 +28,14 @@ public class Fastjson2JSONMapper implements JSONMapper {
 
     @Override
     public JSONMapper getJSONMapper(String key) {
-        return new Fastjson2JSONMapper(jsonObject.getJSONObject(key));
+        JSONObject jsonObject1 = jsonObject.getJSONObject(key);
+        return jsonObject1 == null ? null : new Fastjson2JSONMapper(jsonObject1);
     }
 
     @Override
     public JSONArrayMapper getJSONArrayMapper(String key) {
-        return new Fast2JSONArrayMapper(jsonObject.getJSONArray(key));
+        JSONArray jsonArray = jsonObject.getJSONArray(key);
+        return jsonArray == null ? null : new Fast2JSONArrayMapper(jsonArray);
     }
 
     @Override
@@ -76,6 +78,7 @@ public class Fastjson2JSONMapper implements JSONMapper {
         return jsonObject.getInteger(key);
     }
 
+    @Override
     public int getIntValue(String key) {
         return jsonObject.getIntValue(key);
     }

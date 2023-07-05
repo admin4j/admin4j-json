@@ -34,7 +34,8 @@ public class GsonArrayMapper implements JSONArrayMapper {
      */
     @Override
     public JSONMapper getMapper(int index) {
-        return new GsonJSONMapper(gson, (JsonObject) json.get(index));
+        JsonObject json1 = (JsonObject) json.get(index);
+        return json1 == null ? null : new GsonJSONMapper(gson, json1);
     }
 
     /**
@@ -43,7 +44,8 @@ public class GsonArrayMapper implements JSONArrayMapper {
      */
     @Override
     public JSONArrayMapper getArray(int index) {
-        return new GsonArrayMapper(gson, (JsonArray) json.get(index));
+        JsonArray json1 = (JsonArray) json.get(index);
+        return json1 == null ? null : new GsonArrayMapper(gson, json1);
     }
 
     /**

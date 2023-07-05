@@ -157,7 +157,7 @@ public class JacksonConvertor implements JSONConvertor {
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
-        return new JacksonJSONMapper(mapper, node);
+        return node == null ? null : new JacksonJSONMapper(mapper, node);
     }
 
     @Override
@@ -170,7 +170,7 @@ public class JacksonConvertor implements JSONConvertor {
             throw new RuntimeException(e);
         }
 
-        return new JacksonJSONMapper(mapper, node);
+        return node == null ? null : new JacksonJSONMapper(mapper, node);
     }
 
     @Override
@@ -219,7 +219,7 @@ public class JacksonConvertor implements JSONConvertor {
             throw new RuntimeException(e);
         }
 
-        return new JacksonArrayMapper(mapper, arrayNode);
+        return arrayNode == null ? null : new JacksonArrayMapper(mapper, arrayNode);
     }
 
     @Override
@@ -231,6 +231,6 @@ public class JacksonConvertor implements JSONConvertor {
             throw new RuntimeException(e);
         }
 
-        return new JacksonArrayMapper(mapper, arrayNode);
+        return arrayNode == null ? null : new JacksonArrayMapper(mapper, arrayNode);
     }
 }

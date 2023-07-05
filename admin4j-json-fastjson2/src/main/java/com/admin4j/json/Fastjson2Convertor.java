@@ -108,12 +108,13 @@ public class Fastjson2Convertor implements com.admin4j.json.JSONConvertor {
     public JSONMapper parseMapper(InputStream is) {
 
         JSONObject jsonObject = JSON.parseObject(is, StandardCharsets.UTF_8, JSONObject.class);
-        return new Fastjson2JSONMapper(jsonObject);
+        return jsonObject == null ? null : new Fastjson2JSONMapper(jsonObject);
     }
 
     @Override
     public JSONMapper parseMapper(String input) {
-        return new Fastjson2JSONMapper(JSON.parseObject(input));
+        JSONObject jsonObject = JSON.parseObject(input);
+        return jsonObject == null ? null : new Fastjson2JSONMapper(jsonObject);
     }
 
     @Override
@@ -136,7 +137,7 @@ public class Fastjson2Convertor implements com.admin4j.json.JSONConvertor {
     @Override
     public JSONArrayMapper parseArrayMapper(String input) {
         JSONArray objects = JSON.parseArray(input);
-        return new Fast2JSONArrayMapper(objects);
+        return objects == null ? null : new Fast2JSONArrayMapper(objects);
     }
 
     @Override

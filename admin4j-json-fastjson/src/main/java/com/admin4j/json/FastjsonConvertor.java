@@ -117,7 +117,7 @@ public class FastjsonConvertor implements JSONConvertor {
     public JSONMapper parseMapper(InputStream is) {
         try {
             JSONObject jsonObject = JSON.parseObject(is, StandardCharsets.UTF_8, JSONObject.class);
-            return new FastjsonJSONMapper(jsonObject);
+            return jsonObject == null ? null : new FastjsonJSONMapper(jsonObject);
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
@@ -125,7 +125,8 @@ public class FastjsonConvertor implements JSONConvertor {
 
     @Override
     public JSONMapper parseMapper(String input) {
-        return new FastjsonJSONMapper(JSON.parseObject(input));
+        JSONObject jsonObject = JSON.parseObject(input);
+        return jsonObject == null ? null : new FastjsonJSONMapper(jsonObject);
     }
 
     @Override
@@ -148,7 +149,7 @@ public class FastjsonConvertor implements JSONConvertor {
     @Override
     public JSONArrayMapper parseArrayMapper(String input) {
         JSONArray objects = JSON.parseArray(input);
-        return new FastJSONArrayMapper(objects);
+        return objects == null ? null : new FastJSONArrayMapper(objects);
     }
 
     @Override

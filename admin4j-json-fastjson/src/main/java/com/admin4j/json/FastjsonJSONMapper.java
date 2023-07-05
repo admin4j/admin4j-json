@@ -27,7 +27,8 @@ public class FastjsonJSONMapper implements JSONMapper {
 
     @Override
     public JSONMapper getJSONMapper(String key) {
-        return new FastjsonJSONMapper(jsonObject.getJSONObject(key));
+        JSONObject jsonObject1 = jsonObject.getJSONObject(key);
+        return jsonObject1 == null ? null : new FastjsonJSONMapper(jsonObject1);
     }
 
     /**
@@ -36,7 +37,8 @@ public class FastjsonJSONMapper implements JSONMapper {
      */
     @Override
     public JSONArrayMapper getJSONArrayMapper(String key) {
-        return new FastJSONArrayMapper(jsonObject.getJSONArray(key));
+        JSONArray jsonArray = jsonObject.getJSONArray(key);
+        return jsonArray == null ? null : new FastJSONArrayMapper(jsonArray);
     }
 
     @Override

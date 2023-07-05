@@ -104,12 +104,14 @@ public class GsonConvertor implements JSONConvertor {
 
     @Override
     public JSONMapper parseMapper(InputStream is) {
-        return new GsonJSONMapper(this.gson, this.gson.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), JsonObject.class));
+        JsonObject json = this.gson.fromJson(new InputStreamReader(is, StandardCharsets.UTF_8), JsonObject.class);
+        return json == null ? null : new GsonJSONMapper(this.gson, json);
     }
 
     @Override
     public JSONMapper parseMapper(String input) {
-        return new GsonJSONMapper(this.gson, this.gson.fromJson(input, JsonObject.class));
+        JsonObject json = this.gson.fromJson(input, JsonObject.class);
+        return json == null ? null : new GsonJSONMapper(this.gson, json);
     }
 
     @Override
@@ -142,7 +144,7 @@ public class GsonConvertor implements JSONConvertor {
     @Override
     public JSONArrayMapper parseArrayMapper(String input) {
         JsonArray list = gson.fromJson(input, JsonArray.class);
-        return new GsonArrayMapper(gson, list);
+        return list == null ? null : new GsonArrayMapper(gson, list);
     }
 
     @Override
@@ -150,6 +152,6 @@ public class GsonConvertor implements JSONConvertor {
         InputStreamReader inputStreamReader = new InputStreamReader(is);
         JsonArray list = gson.fromJson(inputStreamReader, JsonArray.class);
 
-        return new GsonArrayMapper(gson, list);
+        return list == null ? null : new GsonArrayMapper(gson, list);
     }
 }

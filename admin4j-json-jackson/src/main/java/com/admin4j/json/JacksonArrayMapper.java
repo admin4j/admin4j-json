@@ -3,6 +3,7 @@ package com.admin4j.json;
 import com.admin4j.json.mapper.JSONArrayMapper;
 import com.admin4j.json.mapper.JSONMapper;
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.databind.node.ArrayNode;
 import com.fasterxml.jackson.databind.type.CollectionType;
@@ -35,7 +36,8 @@ public class JacksonArrayMapper implements JSONArrayMapper {
      */
     @Override
     public JSONMapper getMapper(int index) {
-        return new JacksonJSONMapper(mapper, arrayNode.get(index));
+        JsonNode jsonNode = arrayNode.get(index);
+        return jsonNode == null ? null : new JacksonJSONMapper(mapper, jsonNode);
     }
 
     /**
@@ -44,7 +46,8 @@ public class JacksonArrayMapper implements JSONArrayMapper {
      */
     @Override
     public JSONArrayMapper getArray(int index) {
-        return new JacksonArrayMapper(mapper, (ArrayNode) arrayNode.get(index));
+        ArrayNode arrayNode1 = (ArrayNode) arrayNode.get(index);
+        return arrayNode1 == null ? null : new JacksonArrayMapper(mapper, arrayNode1);
     }
 
     /**
@@ -99,7 +102,8 @@ public class JacksonArrayMapper implements JSONArrayMapper {
      */
     @Override
     public String getString(int index) {
-        return arrayNode.get(index).textValue();
+        JsonNode node = arrayNode.get(index);
+        return node == null ? null : node.textValue();
     }
 
     /**
