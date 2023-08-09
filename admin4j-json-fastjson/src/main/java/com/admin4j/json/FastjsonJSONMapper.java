@@ -61,7 +61,11 @@ public class FastjsonJSONMapper implements JSONMapper {
         JSONArray jsonArray = jsonObject.getJSONArray(key);
         List<T> jsonMappers = new ArrayList<>(jsonArray.size());
         for (Object jsonObject : jsonArray) {
-            jsonMappers.add(((JSONObject) jsonObject).toJavaObject(tClass));
+            if (jsonObject instanceof JSONObject) {
+                jsonMappers.add(((JSONObject) jsonObject).toJavaObject(tClass));
+            } else {
+                jsonMappers.add((T) jsonObject);
+            }
         }
         return jsonMappers;
     }
